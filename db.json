@@ -41,20 +41,20 @@
       "comment": "Perfect for a cold night."
     },
     {
-      "name": "Greek salad",
-      "restaurant": "2fdedaa",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Hamburger_%28black_bg%29.jpg/800px-Hamburger_%28black_bg%29.jpg",
-      "rating": 1,
-      "comment": "qqq",
-      "id": 6
-    },
-    {
       "name": "wer",
       "restaurant": "2fdedaa",
       "image": "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/08/Greek-Salad-main.jpg",
       "rating": 3,
       "comment": "test 2",
       "id": 7
+    },
+    {
+      "name": "Flatburger 2.0",
+      "restaurant": "qwq",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Hamburger_%28black_bg%29.jpg/800px-Hamburger_%28black_bg%29.jpg",
+      "rating": 2,
+      "comment": "222",
+      "id": 8
     }
   ]
 }

@@ -6,6 +6,7 @@
   <title>Ramen Rater</title>
   <link rel="stylesheet" type="text/css" href="styles.css" />
   <script defer type="text/javascript" src="./src/index.js"></script>
+
 </head>
 
 <body>
@@ -58,6 +59,85 @@
     <textarea name="new-comment" id="new-comment"></textarea>
     <input type="submit" value="Update" />
   </form>
+
+
+
+
+  <script type="module">
+    // // Import the functions you need from the SDKs you need
+    // import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+    // import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+
+    // import { firebase } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js"
+
+
+    // // TODO: Add SDKs for Firebase products that you want to use
+    // // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // // Your web app's Firebase configuration
+    // // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // const firebaseConfig = {
+    //   apiKey: "AIzaSyC20Qxi5KG7U1x0FR_v2IOaWmmv6sMIWEA",
+    //   authDomain: "testproject-3b383.firebaseapp.com",
+    //   databaseURL: "https://testproject-3b383-default-rtdb.firebaseio.com",
+    //   projectId: "testproject-3b383",
+    //   storageBucket: "testproject-3b383.appspot.com",
+    //   messagingSenderId: "756813721292",
+    //   appId: "1:756813721292:web:cfc6a2b4645267fbc79c69",
+    //   measurementId: "G-8H1MP19VRL"
+    // };
+
+    // // Initialize Firebase
+    // const app = initializeApp(firebaseConfig);
+    // const analytics = getAnalytics(app);
+
+    // // Initialize Cloud Firestore and get a reference to the service
+    // // Initialize Cloud Firestore through Firebase
+
+    // firebase.initializeApp(firebaseConfig);
+    // const db = firebase.firestore();
+    // // const db = firebase.firestore(app);
+
+
+    // console.log(app)
+    // console.log(analytics)
+    // console.log(db)
+  </script>
+
+  <script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+    import { getFirestore, collection, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js';
+    // 'firebase/firestore/lite';
+    //"https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore-compat.js"
+    // Follow this pattern to import other Firebase services
+    // import { } from 'firebase/<service>';
+
+    // TODO: Replace the following with your app's Firebase project configuration
+
+    // TODO: Replace the following with your app's Firebase project configuration
+    const firebaseConfig = {
+      ...
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const coll = collection(db, db['_databaseId'].database);
+    // const querySnapshot = getDocs(collection(db, db['_databaseId'].database));
+    const q = query(collection(db, db['_databaseId'].database), where("Plan", "==", true));
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+    });
+
+
+    console.log(app)
+    console.log(db)
+    console.log(coll)
+    console.log(q)
+  </script>
 
 </body>
 

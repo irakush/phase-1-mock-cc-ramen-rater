@@ -142,19 +142,39 @@ const updateRamenRatingAndComment = () => {
     singlRamenObject.rating = Number(e.target["new-rating"].value)
     singlRamenObject.comment = e.target["new-comment"].value
 
-    allRamenObjects = allRamenObjects.map(ramen => {
+    console.log('PATCH: ', singlRamenObject)
 
-      if(ramen.id === singlRamenObject.id) {
-        console.log("singlRamenObject: ", singlRamenObject)
-        return singlRamenObject
+    fetch(url + `/${singlRamenObject.id}`, {
+      method: 'PATCH',
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify(singlRamenObject)
+    })
+    .then(res => {
+      console.log(res)
+      if (res.ok) {
+        res.json().then(data => {
+          console.log('DATA: ', data)
+          allRamenObjects = allRamenObjects.map(ramen => {
+            if(ramen.id === data.id) {
+              console.log("singlRamenObject: ", data)
+              return data
+            } else {
+              return ramen
+            }
+          })
+
+          updateRamenMenu()
+          console.log('after update: ', allRamenObjects)
+
+        })
       } else {
-        return ramen
+        alert('Ramen was not updated!')
       }
     })
 
-    console.log('after update: ', allRamenObjects)
-
-    updateRamenMenu()
+    updateRamenForm.reset()
 
   })
 }
@@ -170,12 +190,19 @@ const updateRamenMenu = () => {
 
 
 const deleteRamenFromMenu = (ramen) => {
-  allRamenObjects = allRamenObjects.filter(r => {
 
-    console.log('r.id ', r.id)
-    console.log('ramen.id ', ramen.id)
-
-    return r.id != ramen.id
+  fetch(url + `/${ramen.id}`, {
+    method: 'DELETE'
   })
-  updateRamenMenu()
+  .then(res => {
+    allRamenObjects = allRamenObjects.filter(r => {
+
+      console.log('r.id ', r.id)
+      console.log('ramen.id ', ramen.id)
+  
+      return r.id != ramen.id
+    })
+
+    updateRamenMenu()
+  })
 }

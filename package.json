@@ -29,6 +29,7 @@
   "homepage": "https://github.com/learn-co-curriculum/phase-1-mock-cc-ramen-rater#readme",
   "dependencies": {
     "chai": "^4.2.0",
+    "firebase": "^10.6.0",
     "jsdom": "^9.0",
     "mocha": "5.2.0",
     "mocha-jsdom": "~1.1.0"
